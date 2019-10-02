@@ -1,0 +1,21 @@
+{% extends 'lookup.html' %}
+
+{% block info_to_display %}
+    {% if problem|length %}
+        <div class="row justify-content-center">
+            <div class="col-8" style="text-align:center">
+                <p style="font-size:0.8vw ; color:red">{{ problem }}</p>
+            </div>
+        </div>
+    {% else %}
+        <div class="row justify-content-center">
+            <div class="col-8" style="text-align:center">
+                <img src={{ url_for('static',filename='images/broken_url.png') }} style="max-width:30% ; height:auto">
+                <br>
+                <p style="font-size:1vw">If you're seeing this, you clicked a bad link or are trying to manipulate the URL.</p>
+                <br>
+                <p><a href="/">Return to the main application page</a> or search again at the top of this page</p>
+            </div>
+        </div>    
+    {% endif %}
+{% endblock %}

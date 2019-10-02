@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang=en>
+
+    <head>
+        <title>{% if lookup %}{{summoner[0]}} - {% endif %}Chest & Mastery Lookup - gcor.io</title>
+        <meta charset="UTF-8">
+        <!-- As a good habit, always include the tags and attributes above this line -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Start REQUIRED -- For complete usage of Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- jquery, Popper.js, and BS javascript files (Potentially optional based on BS components used -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- End REQUIRED -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+        <script src="{{ url_for('static',filename='js/xregexp.js') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/mycss.css') }}">
+    </head>
+
+    <body style="font-size:100%">
+        &nbsp;&nbsp;
+        <a href="https://gcor.io/" style="text-decoration:none">
+            <span>
+                Return to gcor.io
+            </span>
+        </a>
+        <div class="container">
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-8" style="text-align:center">
+                    <h1 style="font-size:2.5vw">Hextech Chest & Mastery Lookup</h1>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="row justify-content-center">
+                        <form action="" style="width:100%" novalidate>
+                            <div class="input-group">
+                                <div class="col-5">
+                                    <select class="form-control" name="region" style="font-size:1vw">
+                                        <option value="none">Search All Regions...</option>
+                                        <option value="br1">Brazil</option>
+                                        <option value="eun1">EU Nordic & East</option>
+                                        <option value="euw1">EU West</option>
+                                        <option value="jp1">Japan</option>
+                                        <option value="kr">Korea</option>
+                                        <option value="la1">Latin America North</option>
+                                        <option value="la2">Latin America South</option>
+                                        <option value="na1">North America</option>
+                                        <option value="oc1">Oceania</option>
+                                        <option value="tr1">Turkey</option>
+                                        <option value="ru">Russia</option>
+                                    </select>
+                                </div>                        
+                                <div class="col-5">
+                                    <input type="text" class="form-control" placeholder="Summoner Name..." name="name_input" id="summoner_search_box" style="font-size:1vw" required>
+                                </div>                        
+                                <div class="col-2">
+                                    <button class="btn btn-secondary" id="search_button" type="submit" style="font-size:1vw">SEARCH</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="row justify-content-center">
+                        <div class="col-5"></div>
+                        <div class="col-5">
+                            <p id="error_msg" style="visibility:hidden ; text-align:center ; color:red ; font-size:1vw">Error Message goes here</p>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
+                </div>
+            </div>
+            {% block info_to_display %}{% endblock %}
+        </div>
+        <script src="{{ url_for('static',filename='js/validate.js') }}"></script>
+        {% block script_for_collapse %}{% endblock %}
+    </body>
+</html>

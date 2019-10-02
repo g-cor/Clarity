@@ -1,0 +1,75 @@
+.form-control {
+    width: 100%;
+}
+
+.blink {
+    animation-name:blinking_red;
+    animation-duration:3s;
+}
+
+@keyframes blinking_red {
+    0% {
+        border-style:solid;
+        border-color:#ced4da;
+    }
+
+    7.5% {
+        border-color:red;
+    }
+
+    15% {
+        border-color:transparent;
+    }
+
+    22.5% {
+        border-color:red;
+    }
+
+    30% {
+        border-color:transparent;
+    }
+
+    37.5% {
+        border-color:red;
+    }
+
+    100% {
+        border-color:#ced4da;
+    }
+}
+
+.blink_crimson {
+    animation-name:blinking_crimson;
+    animation-duration:3s;
+}
+
+@keyframes blinking_crimson {
+    0% {
+        border-style:solid;
+        border-color:#ced4da;
+    }
+
+    7.5% {
+        border-color:crimson;
+    }
+
+    15% {
+        border-color:transparent;
+    }
+
+    22.5% {
+        border-color:crimson;
+    }
+
+    30% {
+        border-color:transparent;
+    }
+
+    37.5% {
+        border-color:crimson;
+    }
+
+    100% {
+        border-color:#ced4da;
+    }
+}
