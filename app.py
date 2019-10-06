@@ -1,3 +1,10 @@
+'''
+app.py
+The back-end code that provides the logic for the Clarity application.
+
+Author: Gerald Cordova <gerald.cordova@alumni.uncg.edu>
+'''
+
 #MODULES
 from flask import Flask, render_template, request
 import requests, re
