@@ -3,17 +3,17 @@
 The web app that makes your options clearer!
 
 
-##Table of Contents
+## Table of Contents
 
-0. Introduction
-I. Relevant Terminology
-II. Why this application was built
-III. How to access the application
-IV. How to use the application
-V. Installing files locally
+1. Introduction
+2. Relevant Terminology
+3. Why this application was built
+4. How to access the application
+5. How to use the application
+6. Installing files locally
 
 
-## INTRODUCTION
+## Introduction
 
 Clarity is a web application for League of Legends players that is powered using
 the Python language and the Flask web framework. "Clarity" is also the name of an
@@ -25,34 +25,34 @@ an example of how the application would be used, and installation instructions i
 case someone would like to run the program on their private machine.
 
 
-## RELEVANT TERMINOLOGY
+## Relevant Terminology
 
-League of Legends - The name of the popular online game that this app is built around
+**League of Legends** - The name of the popular online game that this app is built around
 
-Riot Games (or "Riot") - The name of the company that developed, and continues to
+**Riot Games (or "Riot")** - The name of the company that developed, and continues to
 develop/support the game.
 
-Summoner - This is synonymous with "player". A long time ago, Riot used the word
+**Summoner** - This is synonymous with "player". A long time ago, Riot used the word
 "summoner" to refer to entities that could control champions. You, as a player, were
 also a summoner.
 
-Champion - The character that a player/summoner will be using for the duration of a
+**Champion** - The character that a player/summoner will be using for the duration of a
 match, which generally spans 15-30 minutes. League of Legends has approximately
 140+ champions available to play.
 
-Hextech Chest - A type of reward that a player can earn by performing well on a
+**Hextech Chest** - A type of reward that a player can earn by performing well on a
 champion. A player has the ability to earn one chest per week, and can only use
 a particular champion for earning that chest once per year. So as an example, if I earn
 a chest using Alistar this week, I will not be able to use Alistar to earn another
 chest until next year. But I will be able to use a different champion to earn another
 chest next week.
 
-Champion Mastery - This is a system in the game to help reflect a player's experience
+**Champion Mastery** - This is a system in the game to help reflect a player's experience
 and/or expertise using a champion. There are cosmetic rewards players can earn as
 they progress in champion mastery levels.
 
 
-## WHY THE APPLICATION WAS BUILT
+## Why the application was built
 
 If you want to know more about League of Legends, Google is your friend. All you need
 to know about the game is that before starting any match, you will choose a character
@@ -72,12 +72,12 @@ up an API that provides that information, and more. My application makes use of 
 API and presents the information for a particular player in an easily digestible fashion.
 
 
-## HOW TO ACCESS THE APPLICATION
+## How to access the application
 
 Visit https://gcor.io/league
 
 
-## HOW TO USE THE APPLICATION
+## How to use the application
 
 All you really need to use the application is to know a player's summoner name. This is
 the player's name that is displayed during a match. If you happen to know the server or
@@ -97,7 +97,7 @@ one through the application anyway.
 [Diagram of expanded champion mastery info (or gif?)]
 
 
-## INSTALLING FILES LOCALLY
+## Installing files locally
 
 This section will not be perfect, because I did the initial development environment setup
 a while ago, and don't exactly recall all the steps I took.
@@ -117,21 +117,30 @@ into app.py at line 11 in place of the entire "PRIVATE - This must be..." messag
 leave the quotations alone and just replace the message within the quotes with the API key. The
 next few steps will explain how to get an API key.
 
-   a. First, you can go to Riot's Developer Portal at https://developer.riotgames.com/
+   A. First, you can go to [Riot's Developer Portal](https://developer.riotgames.com/)
 
-   b. If you play League of Legends, you will use your normal account to generate an API key. There's
+   B. **If you play League of Legends**, you will use your normal account to generate an API key. There's
 a login button in the corner you can use to sign in.
 
-   If you do not play League of Legends, you will need to sign up for an account to be able to
+      **If you do not play League of Legends**, you will need to sign up for an account to be able to
 access the developer portal. Sign up is fairly straightforward, you only need an email address.
 
-   c. Once you've accessed the developer portal, you can very quickly see a "development API key"
+   C. Once you've accessed the developer portal, you can very quickly see a "development API key"
 a little ways down the screen. If it is an expired key, you can 'regenerate' a new API key at
 the bottom of the page.
 
-   d. Copy and paste the development API key to that "API_KEY" variable I pointed out at the
-beginning of step 4. Keep the quotation marks, only change the message within the quotation.
-Save the modification. (Please note that your development API key expires every 24 hours)
+![API Key Location](https://gcor.io/images/API_KEY_location.PNG)
+
+   D. Copy and paste the development API key to the "API_KEY" variable within app.py. It should
+   go from..
+   ```python
+   API_KEY = "PRIVATE - This must be kept private so people cannot impersonate me to access Riot's API"
+   ```
+   to something like..
+   ```python
+   API_KEY = "RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+   ```
+   Save the modifications. Please note that your development API key expires every 24 hours.
 
 5. You should be all set up now! Within your terminal, you should be able to run "py app.py",
 which will start the application locally and allow you to visit http://127.0.0.1:5000/
