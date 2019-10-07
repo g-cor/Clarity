@@ -117,8 +117,8 @@ separated by the mastery level each character is at.
 
 ## Installing files locally
 
-This section will not be perfect, because I did the initial development environment setup
-a while ago, and don't exactly recall all the steps I took.
+This section is provided on the off-chance that you'd like to run this on your private machine. One important point of note is that this section will not be perfect. I did the initial development environment setup
+a while ago, and don't recall every step I took. But I did what I could to re-trace my steps with Flask and the Riot API and outline that process as I best remember it.
 
 1. Download or clone the repo using the big green button on the right side of the top of this page.
 
@@ -131,10 +131,7 @@ Those libraries and their installation commands are:
    - Flask (pip install Flask) -- You might've already done this in step 3
    - requests (pip install requests)
 
-5. You will need a valid API key in order to run the code. The API key will need to be inserted
-into app.py at line 11 in place of the entire "PRIVATE - This must be..." message. So, you'll
-leave the quotations alone and just replace the message within the quotes with the API key. The
-next few steps will explain how to get an API key.
+5. You will need a valid API key in order to run the code. The steps to get one are as follows:
 
    - Go to [Riot's Developer Portal](https://developer.riotgames.com/)
 
