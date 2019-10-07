@@ -1,6 +1,6 @@
 # Clarity
 
-The web app that makes your options clearer!
+The web app that helps you decide who you want to play!
 
 
 ## Table of Contents
@@ -86,15 +86,33 @@ region that the player belongs to, that will expedite your usage of the applicat
 The application was built to be straight-forward, but here's some diagrams to walk
 one through the application anyway.
 
-[Base diagram]
+- When you first arrive at the application, it'll look like the picture below:
 
-[Diagram of search functionality]
+![Application Homepage](https://gcor.io/images/step1.png)
 
-[Diagram of summoner return]
+- For this demo, I'm supplying my summoner name. Please notice I'm not selecting a region for this lookup request.
 
-[Diagram of expanded hex chest availability (or gif?)]
+![Entering a summoner name](https://gcor.io/images/step2.png)
 
-[Diagram of expanded champion mastery info (or gif?)]
+- If you don't select a region, you'll have a screen like this. Since you should have an idea of the person you're
+searching for, you should be able to identify who the correct player is based on the information provided. If you
+**did** select a region, skip this picture entirely.
+
+![Results from searching all servers](https://gcor.io/images/step3.png)
+
+- Once you've found the player from the correct server, you'll have a screen with some basic information about the
+player like so:
+
+![Basic summoner information](https://gcor.io/images/step4.png)
+
+- Clicking the "Available Hextech Chests" button will provide information like the picture below:
+
+![Champions that I can earn a hextech chest with are listed](https://gcor.io/images/step5.png)
+
+- Clicking the "Mastery Progress" button will provide information about my mastery with every champion in the game,
+separated by the mastery level each character is at.
+
+![My champion mastery progress is listed by mastery level, from 7 to 0](https://gcor.io/images/step6.png)
 
 
 ## Installing files locally
@@ -102,36 +120,37 @@ one through the application anyway.
 This section will not be perfect, because I did the initial development environment setup
 a while ago, and don't exactly recall all the steps I took.
 
-1. Install python in whatever environment you need to use. If you have to choose between
-python 2 and python 3, choose 3.
+1. Download or clone the repo using the big green button on the right side of the top of this page.
 
-2. Set up and activate a virtual environment as described in [this Flask tutorial](https://flask.palletsprojects.com/en/1.1.x/installation/#installation)
+2. [Download and install Python, if you don't have it yet.](https://www.python.org/downloads/) You might run into problems if you try using a version older than 3.7.
 
-3. Once you've done that, you can install the necessary libraries for the application to work.
+3. Set up and activate a virtual environment as described in [this Flask tutorial](https://flask.palletsprojects.com/en/1.1.x/installation/#installation)
+
+4. Once you've done that, you can install the necessary libraries for the application to work.
 Those libraries and their installation commands are:
-   - Flask (pip install Flask) -- You might've already done this in step 2
+   - Flask (pip install Flask) -- You might've already done this in step 3
    - requests (pip install requests)
 
-4. You will need a valid API key in order to run the code. The API key will need to be inserted
+5. You will need a valid API key in order to run the code. The API key will need to be inserted
 into app.py at line 11 in place of the entire "PRIVATE - This must be..." message. So, you'll
 leave the quotations alone and just replace the message within the quotes with the API key. The
 next few steps will explain how to get an API key.
 
-   A. First, you can go to [Riot's Developer Portal](https://developer.riotgames.com/)
+   - Go to [Riot's Developer Portal](https://developer.riotgames.com/)
 
-   B. **If you play League of Legends**, you will use your normal account to generate an API key. There's
+   - **If you play League of Legends**, you will use your normal account to generate an API key. There's
 a login button in the corner you can use to sign in.
 
-      **If you do not play League of Legends**, you will need to sign up for an account to be able to
+   -  **If you do not play League of Legends**, you will need to sign up for an account to be able to
 access the developer portal. Sign up is fairly straightforward, you only need an email address.
 
-   C. Once you've accessed the developer portal, you can very quickly see a "development API key"
+   - Once you've accessed the developer portal, you can very quickly see a "development API key"
 a little ways down the screen. If it is an expired key, you can 'regenerate' a new API key at
 the bottom of the page.
 
-![API Key Location](https://gcor.io/images/API_KEY_location.PNG)
+   ![API Key Location](https://gcor.io/images/API_KEY_loc.png)
 
-   D. Copy and paste the development API key to the "API_KEY" variable within app.py. It should
+   - Copy and paste the development API key to the "API_KEY" variable within app.py (located around line 11). It should
    go from..
    ```python
    API_KEY = "PRIVATE - This must be kept private so people cannot impersonate me to access Riot's API"
@@ -140,7 +159,7 @@ the bottom of the page.
    ```python
    API_KEY = "RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
    ```
-   Save the modifications. Please note that your development API key expires every 24 hours.
+   - Save the modifications. Please note that your development API key expires every 24 hours.
 
-5. You should be all set up now! Within your terminal, you should be able to run "py app.py",
+6. You should be all set up now! Within your terminal, you should be able to run "py app.py",
 which will start the application locally and allow you to visit http://127.0.0.1:5000/
