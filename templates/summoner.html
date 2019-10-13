@@ -4,17 +4,17 @@
 <br>
 <div class="row justify-content-center">
     <div class="col-8" style="text-align:center">
-        <img src={{icon_url}} style="max-width:30% ; height:auto">
+        <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/profileicon/{{ player.icon_id|string }}.png" style="max-width:12vw ; height:auto">
     </div>
 </div>
 <div class="row justify-content-center">
-    <h1 style="font-size:2.5vw">{{summoner[0]}}</h1>
+    <h1 style="font-size:2.5vw">{{player.name}}</h1>
 </div>
 <div class="row justify-content-center">
-    <h2 style="font-size:2vw">Level {{summoner[1]}}</h2>
+    <h2 style="font-size:2vw">Level {{player.level}}</h2>
 </div>
 <div class="row justify-content-center">
-    <h2 style="font-size:1.8vw">Region: {{summoner[2]}}</h2>
+    <h2 style="font-size:1.8vw">Region: {{player.region_name}}</h2>
 </div>
 
 <div class="row justify-content-center">
@@ -31,28 +31,28 @@
     <div class="row justify-content-center">
         <p style="font-size:2vw">NOTE: List is sorted by champion mastery points</p>
     </div>
-    {% for row_number in range( (( chest_option_list|length )//6) + 1) %}
+    {% for row_number in range( (( player.chest_champs|length )//6) + 1) %}
         <div class="row justify-content-start">
             {% for sub_row in range(2) %}
                 <div class="col-sm-6" style="text-align:center">
                     <div class="row justify-content-start">
                         {% if sub_row == 0 %}
                             {% for i in range(3) %}
-                                {% if (row_number*6)+i < chest_option_list|length %}
+                                {% if (row_number*6)+i < player.chest_champs|length %}
                                     <div class="col-4" style="text-align:center">
-                                        <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/champion/{{ chest_option_list[(6*row_number)+i] }}.png" style="max-width:75% ; height:auto">
+                                        <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/champion/{{ player.chest_champs[(6*row_number)+i] }}.png" style="max-width:75% ; height:auto">
                                         <br>
-                                        <p style="font-size:1.4vw">{{ chest_option_list[(6*row_number)+i] }}</p>
+                                        <p style="font-size:1.4vw">{{ player.chest_champs[(6*row_number)+i] }}</p>
                                     </div>
                                 {% endif %}
                             {% endfor %}
                         {% else %}
                             {% for i in range(3,6) %}
-                                {% if (row_number*6)+i < chest_option_list|length %}
+                                {% if (row_number*6)+i < player.chest_champs|length %}
                                     <div class="col-4" style="text-align:center">
-                                        <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/champion/{{ chest_option_list[(6*row_number)+i] }}.png" style="max-width:75% ; height:auto">
+                                        <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/champion/{{ player.chest_champs[(6*row_number)+i] }}.png" style="max-width:75% ; height:auto">
                                         <br>
-                                        <p style="font-size:1.4vw">{{ chest_option_list[(6*row_number)+i] }}</p>
+                                        <p style="font-size:1.4vw">{{ player.chest_champs[(6*row_number)+i] }}</p>
                                     </div>
                                 {% endif %}
                             {% endfor %}
@@ -77,22 +77,22 @@
                 <p style="font-size:1.6vw">{{ mastery_level }}</p>
             </div>
             <div class="col-10 my-auto">
-                {% for row_number in range((champ_list_by_mastery[mastery_level]|length // 6)+1) %}
+                {% for row_number in range((player.mastery_lists[mastery_level]|length // 6)+1) %}
                     <div class="row justify-content-start">
                         {% for sub_row in range(2) %}
                             <div class="col-sm-6" style="text-align:center">
                                 <div class="row justify-content-start">
                                     {% if sub_row == 0 %}
                                         {% for column_number in range(3) %}
-                                            {% if (row_number*6)+column_number < champ_list_by_mastery[mastery_level]|length %}
+                                            {% if (row_number*6)+column_number < player.mastery_lists[mastery_level]|length %}
                                                 <div class="col-4" style="text-align:center">
-                                                    <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/champion/{{ champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["name"] }}.png" style="max-width:60% ; height:auto"><br>
+                                                    <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/champion/{{ player.mastery_lists[mastery_level][(row_number*6)+column_number]["name"] }}.png" style="max-width:60% ; height:auto"><br>
                                                     {% if mastery_level == 7 %}
                                                     <span style="font-size:1.2vw">Max level</span>
                                                     {% elif mastery_level > 4 %}
-                                                    <span style="font-size:1.2vw">{{ champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["tokens"] }}/{{ mastery_level - 3 }} tokens</span>
+                                                    <span style="font-size:1.2vw">{{ player.mastery_lists[mastery_level][(row_number*6)+column_number]["tokens"] }}/{{ mastery_level - 3 }} tokens</span>
                                                     {% elif mastery_level > 0 %}
-                                                    <span style="font-size:1.2vw">{{ champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["xp"] }}/{{ champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["xp"]+champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["xpLeft"] }}</span>
+                                                    <span style="font-size:1.2vw">{{ player.mastery_lists[mastery_level][(row_number*6)+column_number]["xp"] }}/{{ player.mastery_lists[mastery_level][(row_number*6)+column_number]["xp"]+player.mastery_lists[mastery_level][(row_number*6)+column_number]["xpLeft"] }}</span>
                                                     {% else %}
                                                     <span style="font-size:1.2vw">No points</span>
                                                     {% endif %}
@@ -101,15 +101,15 @@
                                         {% endfor %}
                                     {% else %}
                                         {% for column_number in range(3, 6) %}
-                                            {% if (row_number*6)+column_number < champ_list_by_mastery[mastery_level]|length %}
+                                            {% if (row_number*6)+column_number < player.mastery_lists[mastery_level]|length %}
                                                 <div class="col-4" style="text-align:center">
-                                                    <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/champion/{{ champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["name"] }}.png" style="max-width:60% ; height:auto"><br>
+                                                    <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/champion/{{ player.mastery_lists[mastery_level][(row_number*6)+column_number]["name"] }}.png" style="max-width:60% ; height:auto"><br>
                                                     {% if mastery_level == 7 %}
                                                     <span style="font-size:1.2vw">Max level</span>
                                                     {% elif mastery_level > 4 %}
-                                                    <span style="font-size:1.2vw">{{ champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["tokens"] }}/{{ mastery_level - 3 }} tokens</span>
+                                                    <span style="font-size:1.2vw">{{ player.mastery_lists[mastery_level][(row_number*6)+column_number]["tokens"] }}/{{ mastery_level - 3 }} tokens</span>
                                                     {% elif mastery_level > 0 %}
-                                                    <span style="font-size:1.2vw">{{ champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["xp"] }}/{{ champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["xp"]+champ_list_by_mastery[mastery_level][(row_number*6)+column_number]["xpLeft"] }}</span>
+                                                    <span style="font-size:1.2vw">{{ player.mastery_lists[mastery_level][(row_number*6)+column_number]["xp"] }}/{{ player.mastery_lists[mastery_level][(row_number*6)+column_number]["xp"]+player.mastery_lists[mastery_level][(row_number*6)+column_number]["xpLeft"] }}</span>
                                                     {% else %}
                                                     <span style="font-size:1.2vw">No points</span>
                                                     {% endif %}

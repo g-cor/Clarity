@@ -1,8 +1,8 @@
 {% extends 'lookup.html' %}
-<!-- app.py sends a list of tuples - each tuple has Region Name, summonerDTO, leagueDTO, champMasteryDTO, and Region Code objects-->
+
 {% block info_to_display %}
     <div class="row justify-content-center">
-        {% if search_results|length %}
+        {% if player_list|length %}
         <div class="col-2 my-auto" style="text-align:center ; font-size:1.1vw">
             Region/Server<br>& Name
         </div>
@@ -21,26 +21,26 @@
         </div>
         {% endif %}
     </div>
-    {% for result in search_results %}
+    {% for player in player_list %}
         <!-- When putting on website: /league must come before /?region=.... -->
-        <a href="/?region={{result[4]}}&name_input={{result[1]["name"]}}">
+        <a href="/?region={{player.region_code}}&name_input={{player.name}}">
             <div class="row justify-content-center" style="border-style:solid ; border-color:dodgerblue ; padding:5px">
                 <div class="col-2 my-auto" style="display:table-cell ; text-align:center ; font-size:1.1vw">
-                    {{ result[0] }}<br><br>{{ result[1]["name"] }}
+                    {{ player.region_name }}<br><br>{{ player.name }}
                 </div>
                 <div class="col-2 my-auto" style="text-align:center">
-                    <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/profileicon/{{ result[1]["profileIconId"] }}.png" style="max-width:80%">
+                    <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/profileicon/{{ player.icon_id|string }}.png" style="max-width:80%">
                 </div>
                 <div class="col-2 my-auto" style="display:table-cell ; text-align:center ; font-size:1.2vw">
-                    {{ result[2] }}
+                    {{ player.rank }}
                 </div>
                 <div class="col-6 my-auto mx-auto" style="font-size:1.1vw ; text-align:center">
-                    {% if result[3] is not string %}
-                        {% for champ in result[3] %}
+                    {% if player.most_played|length %}
+                        {% for champ in player.most_played %}
                             <img src="http://ddragon.leagueoflegends.com/cdn/{{VERSION}}/img/champion/{{ champ }}.png" style="max-width:15%">
                         {% endfor %}
                     {% else %}
-                        {{ result[3] }}
+                        Player has not played any matches granting champion mastery!
                     {% endif %}
                 </div>
             </div>
