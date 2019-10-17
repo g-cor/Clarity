@@ -147,7 +147,7 @@ the bottom of the page.
 
    ![API Key Location](https://gcor.io/images/API_KEY_loc.png)
 
-   - Copy and paste the development API key to the "API_KEY" variable within app.py (located around line 11). It should
+   - Copy and paste the development API key to the "API_KEY" variable within constants.py (located around line 10). It should
    go from..
    ```python
    API_KEY = "PRIVATE - This must be kept private so people cannot impersonate me to access Riot's API"
