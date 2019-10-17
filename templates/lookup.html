@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang=en>
-
     <head>
-        <title>{% if lookup %}{{summoner[0]}} - {% endif %}Chest & Mastery Lookup - gcor.io</title>
+        <title>{% if player %}{{player.name}} - {% endif %}Chest & Mastery Lookup - gcor.io</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Start REQUIRED -- For complete usage of Bootstrap -->
@@ -13,21 +12,20 @@
         <!-- End REQUIRED -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
         <script src="{{ url_for('static',filename='js/xregexp.js') }}"></script>
-        <link rel="stylesheet" href="{{ url_for('static',filename='css/mycss.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/validate.css') }}">
+        <script src="{{ url_for('static',filename='js/validate.js') }}"></script>
+        {% block script %}{% endblock %}
     </head>
-
     <body style="font-size:100%">
         <div class="container">
             <br>
             <div class="row justify-content-center">
                 <div class="col-8" style="text-align:center">
                     <h1 style="font-size:3vw">Clarity</h1>
-					<h2 style="font-size:1.5vw">A hextech chest & mastery lookup tool</h2>
+                    <h2 style="font-size:1.5vw">A hextech chest & mastery lookup tool</h2>
                 </div>
             </div>
-
-			<br>
-			
+            <br>
             <div class="row justify-content-center">
                 <div class="col-8">
                     <div class="row justify-content-center">
@@ -73,7 +71,5 @@
             </div>
             {% block info_to_display %}{% endblock %}
         </div>
-        <script src="{{ url_for('static',filename='js/validate.js') }}"></script>
-        {% block script_for_collapse %}{% endblock %}
     </body>
 </html>

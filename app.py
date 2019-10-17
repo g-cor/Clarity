@@ -67,7 +67,7 @@ def index():
 
     #If we get here, we must have a region selected and a summoner name containing valid characters
     else:
-        return see_summoner( request.args.get('region'), request.args.get('name_input'))
+        return see_summoner( request.args.get('region') , request.args.get('name_input'))
 
 
 #DATA-PROCESSING FUNCTIONS
@@ -97,7 +97,7 @@ def see_summoner(region_info, summoner_name):
     player = Player(region_info, summoner_name)
 
     if player.exists:
-        return render_template('summoner.html', player=player, VERSION=CONST.VERSION_NUM)
+        return render_template('results.html', player=player, VERSION=CONST.VERSION_NUM)
     else:
         if player.error == 403:
             return forbidden_handler()
@@ -130,12 +130,12 @@ def search_all_servers(summoner_name):
     while not q.empty():
         player = q.get()
         if player == 403: #If 403 is in the queue, something is wrong and we need to return an error stating such
-            return forbidden_handler(403)
+            return forbidden_handler()
         players.append( player )
 
     #Render the webpage, but sort results based on alphabetical order of the region name 
     #(Otherwise the displayed order of results is based on which thread finishes first, which is incconsistent)
-    return render_template('search.html', player_list=sorted(players, key=lambda x: x.region_name), VERSION=CONST.VERSION_NUM)
+    return render_template('results.html', player_list=sorted(players, key=lambda x: x.region_name), VERSION=CONST.VERSION_NUM)
 
 
 #Our thread function - This function will try to construct a Player using the region passed to it. If it exists, it's added to the queue.

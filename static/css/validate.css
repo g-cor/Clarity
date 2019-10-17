@@ -1,7 +1,3 @@
-.form-control {
-    width: 100%;
-}
-
 .blink {
     animation-name:blinking_red;
     animation-duration:3s;
